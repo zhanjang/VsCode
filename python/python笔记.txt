@@ -1,0 +1,73 @@
+1.list具有的方法(使用时都为list.方法名)
+inster (插入索引,插入内容) 插入一个数到列表中
+append (内容) 在尾部加入元素,不拆分数据
+expend (内容) 在尾部加入元素,拆分数据
+pop (索引) 删除对应索引的数据
+remove (元素) 删除列表中的对应元素
+clear () 清空列表里的所有元素
+index (元素) 查找列表里是否有对应元素
+count (元素) 统计列表里面元素出现的次数
+
+2.tuple具有的方法只有index 和count用法和list一样
+
+3.set的方法
+add(元素) 向集合中添加元素
+remove和list一样
+pop和list一样
+clear和list一样
+set1.difference(set2) 得到一个新集合内容为集合1有而集合2没有的
+set1.difference_update(set2) 得到一个集合内容为集合1中有集合2中没有的
+set1.union(set2) 得到一个集合有1和2的所有元素
+
+4.str的方法
+index() 用法同list
+replace(str1,str2) 查找字符串中的str1替换为str2得到一个新的字符串
+spilt(字符串) 按照给定的字符串进行分割
+count(字符串)用法ton同list
+
+5.dit的方法
+pop()用法同list
+clear()用法同list
+keys() 获取所有的key
+
+6.文件读取和写入
+基本格式:
+变量 = open("文件路径","打开模式",encoding="编码方式")
+
+打开模式:r模式(只读) w模式(写入(原有内容删除)) a模式(追加(写在文件后面,原有内容不删除))
+
+r模式的方法
+read(字节数) 读取指定字节的内容,默认全部
+readlines() 读取每一行内容生成一个列表
+reaaline() 只读取一行内容
+close() 关闭文件解除占用 可以通过with open("文件路径","打开模式",encoding="编码方式") as 变量的方法在结束文件调用后自动关闭文件
+
+w模式的方法 若文件不存在会自动创建
+write(内容) 向缓冲区中写入内容 注:调用close或flush方法后才会真正进入文件
+writelines() 向缓冲区写入列表内的字符串,只能是字符串不能是其他类型数据 注:不会换行要自行输入\n,\t等字符
+flush()吧缓冲区文件写入文件
+close()和r方法一样但可以执行flush的功能
+
+a模式的方法和w模式一样
+
+python操作mysql
+1.connection方法需要手动传入 host地址,port端口,user用户名,password密码  获取连接对象
+2.操作数据库方法
+	1.先用cursor方法获取游标对象
+	2.select_db('数据库名称')选择数据库    和sql中的use功能一样
+	3.执行sql前要调用游标对象来执行命令,命令写法同sql例如 游标对象名称.execute("sql语言命令")
+	4.查询结果通过游标对象.fetchall()来获取   返回数据为元组
+	5.改动数据的行为需要代码手动确认   连接对象.commit()来确认更改   注:可以通过第一步手动为autocommit参数传入True来自动确认更改
+
+
+python json文件基础操作  引入json包 dumps函数把python容器编译为json字符串  loads把json字符串编译成python容器
+
+
+pyspark库操作
+1.SparkConf().setMaster("local[*]")运行终端 本地或分布式服务器.setAppName("test_spark")项目名称
+2.sc = SparkContext(conf=conf)获取运行环境入口 只能通过这种方式
+3.SparkContest方法
+	1.parallelize将数据转为rdd对象传入运行终端中
+	2.collect查看rdd中的内容
+	3.stop停止rdd程序
+	4.主义给pyspark传入pyton解释器的位置
