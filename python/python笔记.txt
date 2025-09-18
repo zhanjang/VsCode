@@ -1,36 +1,4 @@
-1.list具有的方法(使用时都为list.方法名)
-inster (插入索引,插入内容) 插入一个数到列表中
-append (内容) 在尾部加入元素,不拆分数据
-expend (内容) 在尾部加入元素,拆分数据
-pop (索引) 删除对应索引的数据
-remove (元素) 删除列表中的对应元素
-clear () 清空列表里的所有元素
-index (元素) 查找列表里是否有对应元素
-count (元素) 统计列表里面元素出现的次数
-
-2.tuple具有的方法只有index 和count用法和list一样
-
-3.set的方法
-add(元素) 向集合中添加元素
-remove和list一样
-pop和list一样
-clear和list一样
-set1.difference(set2) 得到一个新集合内容为集合1有而集合2没有的
-set1.difference_update(set2) 得到一个集合内容为集合1中有集合2中没有的
-set1.union(set2) 得到一个集合有1和2的所有元素
-
-4.str的方法
-index() 用法同list
-replace(str1,str2) 查找字符串中的str1替换为str2得到一个新的字符串
-spilt(字符串) 按照给定的字符串进行分割
-count(字符串)用法ton同list
-
-5.dit的方法
-pop()用法同list
-clear()用法同list
-keys() 获取所有的key
-
-6.文件读取和写入
+文件读取和写入
 基本格式:
 变量 = open("文件路径","打开模式",encoding="编码方式")
 

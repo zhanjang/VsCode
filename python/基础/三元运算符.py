@@ -1,7 +1,10 @@
+a = int( input("Input a: ") )
+b = int( input("Input b: ") )
+#普通写法
 if a>b:
-    max = a;
+    max = a
 else:
-    max = b;
+    max = b
 print(max)
 #两者表述等价
 max = a if a>b else b

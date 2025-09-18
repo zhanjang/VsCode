@@ -3,6 +3,8 @@ print(40,'\t',end="")
 print(50,'\t',end="")
 print(60,'\t',end="")
 #同时输出多个变量和字符串，指定分隔符
+user_name = "张三"
+user_age = 20
 print("读者名：" ,user_name,"年龄：",user_age,sep='|')
 n = 123456
 # %09d 表示最小宽度为9，左边补0
