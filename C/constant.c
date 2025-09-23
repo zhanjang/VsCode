@@ -15,5 +15,5 @@ enum Color
 
 int main()
 {
-    const int a = 10; //常变量,本质任然是变量,只是能更改
+    const int a = 10; //常变量,本质任然是变量,只是不能更改
 }
