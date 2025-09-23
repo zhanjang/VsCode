@@ -78,4 +78,5 @@ int main()
     c(num3);
     d(num4);
     f(num5);
+    return 0;
 }

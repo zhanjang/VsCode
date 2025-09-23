@@ -12,4 +12,5 @@ int main()
     printf("%d\n",arr[5]);//可以被访问
     printf("%s\n",crr);
     printf("%s",err);
+    return 0;
 }
