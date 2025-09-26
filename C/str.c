@@ -11,7 +11,7 @@ int main()
     char str1[] = "hello"; //定义字符串,编译器会自动在结尾添加\0
     char str2[] = {'h', 'e', 'l', 'l', 'o', '\0'}; //等价于上面
     char str3[] = {'h', 'e', 'l', 'l', 'o'}; //没有\0结尾,可能会出问题
-    char *str4 = "hello"; //通过指针定义字符串,编译器会自动在结尾添加\0
+    char *str4 = "hello"; //通过指针定义字符串,编译器会自动在结尾添加\0,指针定义的为字符串常量,不可以更改
     printf("str1=%s\n", str1);
     printf("str2=%s\n", str2);
     printf("str3=%s\n", str3); //可能会出问题
