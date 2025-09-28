@@ -13,7 +13,8 @@ struct stu
     char name[6];
     char sex;
     struct birthday date;
-} stu1 = {1,"lihua\0",'F'};//需要在结尾处定义结构体变量才能使用,类似面向对象的类和实例的关系
+} stu1 = {1,"lihua\0",'F'};//定义结构体变量,否则无法使用  方法1
+struct stu stu2;//定义结构体变量  方法2
 struct a
 {
     int day;
