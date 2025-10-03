@@ -4,9 +4,36 @@ import os
 print(os.name)#获取操作系统的名称,此为类方法
 print(os.getcwd())#获取当前的工作目录,此为函数
 print(os.chdir())#改变工作目录,影响open等文件的操作
-os.open("python\\test1\\test.txt")#打开文件 flags参数用于指定打开模式,
-#常用模式 os.O_RDONLY只读,os.O_WRONLY只写,os.RDWR读写,os.CREAT文件不存在时创建,os.APPEND追加
+os.open("python\\test1\\test.txt")#打开文件
+#flags参数用于指定打开模式,常用模式 os.O_RDONLY只读,os.O_WRONLY只写,os.RDWR读写,os.CREAT文件不存在时创建,os.APPEND追加
 os.close()#关闭文件,末尾必需使用
 #目录创建函数
 os.mkdir("python\\test1")#创建单个目录,若父目录不存在则会报错,若目录已经被创建同样报错,具有mode参数这个参数只在linux中有用,用于管理文件的权限由八进制int组成
 os.makedirs("python\\test2\\test3")#递归创建目录可同时创建具有多从父子关系的目录,其他与mkidr相同
+os.listdir("python")#打印当前路径下的所有文件和文件夹
+#删除及重命名操作
+os.remove("")#移除对应路径下的文件,若路径为目录则会报错
+os.rename("")#重命名文件或目录的名称
+os.rmdir("")#删除路径中的空目录
+#系统文件常量,根据操作系统不同进行更改
+os.linesep#返回文件中的换行符,返回值为字符串,需要repr函数,下同
+os.pathsep#返回操作系统中使用的分割文件搜索路径的符号
+os.sep#返会操作系统中的文件路径分隔符
+#文件信息
+os.stat()#获取文件或目录的信息
+os.access()#查看文件权限
+#os.path库,常用于路径处理和对传入路径进行处理后的判段
+os.path.abspath("")#返回工作目录下某个文件的绝对路径
+os.path.basename("")#返回文件路径中的文件名字
+os.path.dirname("")#与上面相反,返回路径中的路径的名字
+os.path.commonprefix("")#传入列表,返回所有路径中共同拥有的部分
+os.path.exists("")#判断路径是否存在,同时判断符号链接指向的路径是否存在,存在返回True
+os.path.lexists("")#判断路径是否存在,不判断符号链接指向的路径是否存在
+os.path.isdir("")#判断路径是否为目录,只有为目录才返回True
+os.path.isfile("")#判断路径是否为文件
+os.path.split("")#分割路径为目录和文件例如C:\\User\\Music\\music1.mp3,分割成:C:\\User\\Music和music1.mp3两部分
+os.path.splitext("")#分割文件和文件后缀注分割C:\\User\\Music\\music1.mp3时会分割成:C:\\User\\Music\\music1和.mp3两部分,故需要先进行split处理
+os.path.join("")#自动拼接路径并传入分隔符
+#系统与进程
+os.system()#执行简单的shell命令,不同操作系统有区别,注意操作系统
+os
