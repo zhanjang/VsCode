@@ -36,4 +36,6 @@ os.path.splitext("")#分割文件和文件后缀注分割C:\\User\\Music\\music1
 os.path.join("")#自动拼接路径并传入分隔符
 #系统与进程
 os.system()#执行简单的shell命令,不同操作系统有区别,注意操作系统
-os
+os.environ#获取,修改环境变量,仅影响当前进程和子进程,不影响电脑里面的环境变量
+os.getenv()#获取环境变量,需要手动传入key值,和上面不同,此方法更快
+os.cpu_count()#获取cpu核心数量,返回线程数量非物理核心数
