@@ -35,3 +35,11 @@ class car:#面向对象里面的方法主要用于实现自定义的各种功能
         pass
     def __contains__(self, item):#检查元素是否在数据容器内
         pass
+    #字符串表示与格式化
+    def __str__(self):#调用str时使用,输出内容主要给用户看,具有可读性
+        pass
+    def __repr__(self):#调用repr时使用,输出内容主要具有明确性,面向开发者
+        pass
+    #这两种方法中__repr__始终实现,__str__定义才会有
+    def __format__(self, format_spec):#实现自定义的格式化输出,在调用f-string使用
+        pass
