@@ -32,3 +32,5 @@ print(list4)
 list5 = sorted(list4)
 print(list4)
 print(list5)
+#reverse()方法 反转列表
+print(list4.reverse())
