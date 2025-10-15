@@ -21,7 +21,20 @@ struct a
 } stu[2];//结构体数组,建立两个相同的结构体;
 int main()
 {
+    printf("%d\n",sizeof(stu1.name));
+    printf("%d\n",sizeof(stu1.num));
+    printf("%d\n",sizeof(stu1.sex));
+    printf("%d",sizeof(stu1.date));
+    printf("%d",sizeof(stu1));//为24字节,与内存对齐有关,num占用0-3字节,name数组占用4-9字节,sex占用10字节,date为4字节对齐,故11字节填充,date占用12-23字节,故实际占用大小为24字节
     stu1.date.year = 2007;//嵌套结构体通过多次访问来改写
     stu[0].day = 2;//结构体数组通过结构体的方式来访问并改写数据
     return 0;
 }
+/*对齐规则,意思是起始的内存编号必须是对应规则的整数倍,从0开始计算
+char 1字节
+short 2字节
+int 4字节
+long long 8字节
+float 8字节
+数组的对齐规矩和定义数组的类型有关
+结构体的对齐规则为其内部数据中占用最大的一个*/
