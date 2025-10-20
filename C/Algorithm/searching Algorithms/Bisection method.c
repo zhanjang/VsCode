@@ -9,7 +9,8 @@ int main()
     int left = 0,right = sizeof(a) / sizeof(int) - 1;
     while(left <= right)
     {
-        int mid = (left + right) / 2;
+        //int mid = (left + right) / 2;有数据溢出风险
+        int mid = left + (right - left)/2;//这个无溢出风险
         if (a[mid] < num)
         {
             left = mid + 1;
