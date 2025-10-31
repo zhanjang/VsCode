@@ -58,13 +58,13 @@ void search()
     {
         if (stuid == stu[i].num)
         {
-            printf("学生%d,姓名%s,成绩%d",stu[i].num, stu[i].name, stu[i].graed);
+            printf("学生%d,姓名%s,成绩%d\n",stu[i].num, stu[i].name, stu[i].graed);
             d = 0;
         }
     }
     if (d)
     {
-        printf("未找到学生%d",stuid);
+        printf("未找到学生%d\n",stuid);
     }
     b = 1;
 }
