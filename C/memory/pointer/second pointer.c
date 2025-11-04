@@ -16,5 +16,10 @@ int main()
     printf("%d",(*func)());
     int arr[9];
     printf("%d",&arr[9]-&arr[0]);//数组指针相减,输出数组之间的容量
+    int arr1[3] = {1,2,3};
+    int(*parr1)[3] = &arr1;//数组指针
+    int *parr2 = arr1;//注意此时的parr1和parr2,此时的parr1指向数组,+1后跳过一整个数组,parr2指向arr1的首元素+1后跳过一个元素,虽然parr1和parr2的值相同,当定义不同
+    printf("%d",*(*parr1+1));//此时表示对parr1解引用,解出的结果为arr1,arr1为数组名,+1后再对地址进行解引用,这种方法不常用,这种方法多用于二维数组
+    printf("%d",*(parr2+1));//一般用这种方式
     return 0;
 }
