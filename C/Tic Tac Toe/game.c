@@ -12,6 +12,11 @@ void reset_board(char n[][3])//重置棋盘函数
         } 
     }
 }
+void quick_clear() {
+    int c;
+    scanf("%*[^\n]");
+    scanf("%*c");
+}
 int play(int player,char a)
 {
     int n1 = 0,m1 = 0,clear = 0,n2 = 0,m2 = 0;
@@ -23,7 +28,7 @@ int play(int player,char a)
         }
         printf("\n");
     }
-    while ((clear = getchar()) != '\n' && clear != EOF);//清理缓存区
+    quick_clear();//清理缓存区
     printf("输入你要下的位置");
     scanf("(%d,%d)",&n2,&m2);
     if (chess[n2-1][m2-1] == ' ')
