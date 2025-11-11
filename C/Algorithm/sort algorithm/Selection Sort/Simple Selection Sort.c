@@ -1,4 +1,4 @@
-//版本2.0.0比较排序算法,每次循环最前面的数与后面的依次比较,若满足条件,则对换位置
+//简单选择排序,每次循环最前面的数与后面的依次比较,若满足条件,则记录对应下标,本轮循环结束时进行赋值转换
 #include <stdio.h>
 int main()
 {
@@ -7,15 +7,17 @@ int main()
     len = sizeof(a)/sizeof(int);
     for(j = 0;j <= len-2;j++)
     {
+        int min_num = j;
         for(i = j +1;i <= len - 1;i++)
         {
-            if(a[j]>a[i])
+            if(a[min_num]>a[i])
             {
-                t = a[j];
-                a[j] = a[i];
-                a[i] = t;
+                min_num = i;
             }
         }
+        t = a[j];
+        a[j] = a[min_num];
+        a[min_num] = t;
     }
     printf("num\n");
     for (i = 1;i<=len;i++)
