@@ -40,7 +40,7 @@ void slist_clear(Slist *list)//清空线性表内的元素
         printf("pointer is null\n");
         return;
     }
-    list->num = 0;//将元素个数设置为0,以告诉set和insert函数所有数据都可以覆盖操作
+    list->num = 0;//将元素个数设置为0
 }
 size_t slist_size(Slist *list)//获取线性表内具有的元素个数
 {
@@ -50,6 +50,15 @@ size_t slist_size(Slist *list)//获取线性表内具有的元素个数
         return 0;
     }
     return list->num;//返回线性表的num值,num值记录元素个数
+}
+size_t slist_capacity(Slist *list)//获取线性表内具有的元素个数
+{
+    if (list == NULL)//检查传入指针是否为空
+    {
+        printf("pointer is null\n");
+        return 0;
+    }
+    return list->capacity;//返回线性表的capacity值,capacity值记录最大容量
 }
 Seqtype slist_get(Slist *list,int id)//查找id位置的元素的值
 {
@@ -61,15 +70,19 @@ Seqtype slist_get(Slist *list,int id)//查找id位置的元素的值
 }
 void slist_set(Slist *list,int id,Seqtype d)//将id处的值设置为d
 {
-    if (list != NULL && list->data != NULL && id >= 0 && id < list->num)//判断传入的list和id是否符合条件
+    if (list != NULL && list->data != NULL && id >= 0 && id < list->capacity)//判断传入的list和id是否符合条件
     {
         list->data[id] = d;
+    }
+    if (list->num < id)//如果线性表记录的元素个数小于设置处的个数,则直接将id设置为长度
+    {
+        list->num = id+1;
     }
 }
 void slist_insert(Slist *list,int id,Seqtype d)//在id处插入值d,其他元素顺势后移
 {
     Seqtype *temp = list->data;//创建一个临时数据指针,用来处理所有的操作
-    if (list != NULL && list->data != NULL && id >= 0 && id < list->num)//判断传入的list和id是否符合条件
+    if (list != NULL && list->data != NULL && id >= 0 && id < list->capacity)//判断传入的list和id是否符合条件
         if (list -> capacity < list-> num + 1)//如果原数据表的容量小于插入元素后的容量,则执行扩容代码
         {
             list->capacity *= 2;//将扩容后的容量设置为原先的两倍
