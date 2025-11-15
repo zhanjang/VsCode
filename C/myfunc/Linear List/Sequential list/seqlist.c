@@ -30,7 +30,6 @@ void slist_destroy(Slist* list)//清空线性表,并释放data和list的内存
     list->capacity = 0;
     list->num = 0;
     free(list->data);
-    list->data = NULL;
     free(list);
 }
 void slist_clear(Slist *list)//清空线性表内的元素
