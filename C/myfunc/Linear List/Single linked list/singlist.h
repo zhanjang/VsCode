@@ -8,13 +8,19 @@ struct Singlist
     struct Node* head;//链表的头部指针
     struct Node* tail;//链表的尾部指针
 };
-typedef int Signtype;//方便后续进行元素类型的替换
+typedef int Singtype;//方便后续进行元素类型的替换
 struct Node
 {
-    Signtype data;//存储数据
+    Singtype data;//存储数据
     struct Node* next;//指向下一个链表
 };
 Dlist* dlist_creat();//创建一个单链表
 void dlist_destory(Dlist *list);//删除一个单链表
 void dlist_clear(Dlist *list);//清空单链表中的所有元素
+size_t dlist_size(Dlist *list);//获取单链表的长度
+Singtype dlist_get(Dlist *list,int id);//获取单链表中第id个元素
+void dlist_set(Dlist *list,int id,Singtype num);//设置第id位的元素
+void dlist_add(Dlist *list,int id,Singtype num);//在第id位插入一个元素
+Singtype dlist_remove(Dlist *list,int id);//删除第id位的元素,并返回对应的值
+int dlist_index(Dlist *list,Singtype num);//查找的第一个值位num的元素的位置,没找到返回-1
 #endif
