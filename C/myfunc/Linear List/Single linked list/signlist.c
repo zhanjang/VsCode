@@ -84,11 +84,55 @@ void dlist_set(Dlist *list,int id,Singtype num)
 }
 void dlist_add(Dlist *list,int id,Singtype num)
 {
-
+    if (list == NULL || id < 0 ||id > list->lenght)
+    {
+        return;
+    }
+    if (list->lenght == 0)
+    {
+        dlist_push_front(list,num);
+    }
+    else if (id == list->lenght)
+    {
+        dlist_push_back(list,num);
+    }
+    else
+    {
+        struct Node* temp = get_nodes(list,id-1);
+        struct Node* new = malloc(sizeof(struct Node));
+        new->data = num;
+        new->next = temp->next;
+        temp->next = new;
+        list->lenght++;
+    }
 }
 Singtype dlist_remove(Dlist *list,int id)
 {
-
+    if (list == NULL || id < 0 ||id > list->lenght)
+    {
+        return;
+    }
+    Singtype node;
+    if (id == 0)
+    {
+        node = list->head->data;
+        dlist_pop_front(list);
+    }
+    else if (id == (list->lenght)-1)
+    {
+        node = list->tail->data;
+        dlist_pop_front(list);
+    }
+    else
+    {
+        struct Node* temp = get_nodes(list,id-1);
+        node = temp->next->data;
+        struct Node* cur = temp->next;
+        temp->next = cur->next;
+        free(cur);
+        list->lenght--;
+    }
+    return node;
 }
 int dlist_index(Dlist *list,Singtype num)
 {
@@ -107,6 +151,10 @@ int dlist_index(Dlist *list,Singtype num)
 }
 void dlist_push_front(Dlist *list,Singtype num)
 {
+    if (list == NULL)
+    {
+        return;
+    }
     struct Node*temp = malloc(sizeof(struct Node));
     if (temp == NULL)
     {
@@ -115,16 +163,63 @@ void dlist_push_front(Dlist *list,Singtype num)
     temp->next = list->head;
     temp->data = num;
     list->head = temp;
+    list->lenght++;
 }
 void dlist_push_back(Dlist *list,Singtype num)
 {
-
+    if (list == NULL)
+    {
+        return;
+    }
+struct Node*temp = malloc(sizeof(struct Node));
+    if (temp == NULL)
+    {
+        return;
+    }
+    temp->next = NULL;
+    temp->data = num;
+    list->tail->next = temp;
+    list->tail = temp;
+    list->lenght++;
 }
 void dlist_pop_front(Dlist *list)
 {
-
+    if (list == NULL || list->lenght == 0)
+    {
+        return;
+    }
+    struct Node* temp = list->head;
+    if (list->lenght == 1)
+    {
+        free(temp);
+        list->head = NULL;
+        list->tail = NULL;
+    }
+    else
+    {
+    list->head = temp->next;
+    free(temp);
+    }
+    list->lenght--;
 }
 void dlist_pop_back(Dlist *list)
 {
-
+    if (list == NULL || list->lenght == 0)
+    {
+        return;
+    }
+    struct Node* temp = list->head;
+    if (list->lenght == 1)
+    {
+        free(temp);
+        list->head = NULL;
+        list->tail = NULL;
+    }
+    else
+    {
+        temp = get_nodes(list,(list->lenght)-2);
+        list->tail = temp;
+        free(temp->next);
+    }
+    list->lenght--;
 }
