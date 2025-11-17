@@ -23,4 +23,8 @@ void dlist_set(Dlist *list,int id,Singtype num);//设置第id位的元素
 void dlist_add(Dlist *list,int id,Singtype num);//在第id位插入一个元素
 Singtype dlist_remove(Dlist *list,int id);//删除第id位的元素,并返回对应的值
 int dlist_index(Dlist *list,Singtype num);//查找的第一个值位num的元素的位置,没找到返回-1
+void dlist_push_front(Dlist *list,Singtype num);//在链表头插入元素
+void dlist_push_back(Dlist *list,Singtype num);//在链表尾插入元素
+void dlist_pop_front(Dlist *list);//删除第一个元素
+void dlist_pop_back(Dlist *list);//删除最后一个元素
 #endif

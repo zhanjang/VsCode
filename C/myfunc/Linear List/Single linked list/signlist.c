@@ -82,3 +82,49 @@ void dlist_set(Dlist *list,int id,Singtype num)
         }
     }
 }
+void dlist_add(Dlist *list,int id,Singtype num)
+{
+
+}
+Singtype dlist_remove(Dlist *list,int id)
+{
+
+}
+int dlist_index(Dlist *list,Singtype num)
+{
+    if (list != NULL)
+    {
+        struct Node* temp = list->head;
+        for (size_t i = 0; i < list->lenght; i++,temp = temp->next)
+        {
+            if (temp->data == num)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+void dlist_push_front(Dlist *list,Singtype num)
+{
+    struct Node*temp = malloc(sizeof(struct Node));
+    if (temp == NULL)
+    {
+        return;
+    }
+    temp->next = list->head;
+    temp->data = num;
+    list->head = temp;
+}
+void dlist_push_back(Dlist *list,Singtype num)
+{
+
+}
+void dlist_pop_front(Dlist *list)
+{
+
+}
+void dlist_pop_back(Dlist *list)
+{
+
+}
