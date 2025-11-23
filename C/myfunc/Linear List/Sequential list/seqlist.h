@@ -1,5 +1,6 @@
 #ifndef SEQLIST_H
 #define SEQLIST_H
+//线性表
 /*检查头文件是否被引入,反正反复引用*/
 typedef struct Seqlist Slist;
 typedef int Seqtype;//方便后续进行元素类型的替换

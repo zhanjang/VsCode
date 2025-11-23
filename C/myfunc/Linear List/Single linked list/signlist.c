@@ -11,7 +11,7 @@ Dlist* dlist_creat()
     }
     list->head = NULL;
     list->tail = NULL;
-    list->lenght = 0;
+    list->length = 0;
     return list;
 }
 void dlist_destory(Dlist *list)
@@ -25,7 +25,7 @@ void dlist_destory(Dlist *list)
 }
 void dlist_clear(Dlist *list)
 {
-    if (list->head == NULL || list == NULL)
+    if (list == NULL || list->head == NULL)
     {
         return;
     }
@@ -38,18 +38,18 @@ void dlist_clear(Dlist *list)
     }
     list->head = NULL;
     list->tail = NULL;
-    list->lenght = 0; 
+    list->length = 0; 
 }
 size_t dlist_size(Dlist *list)
 {
     if (list != NULL)
     {
-        return list->lenght;
+        return list->length;
     }
 }
 struct Node* get_nodes(Dlist *list,int id)//内部函数,返回第id个节点
 {
-    if (id < 0 || id > list->lenght)
+    if (id < 0 || id >= list->length)
     {
         return NULL;
     }
@@ -70,6 +70,7 @@ Singtype dlist_get(Dlist *list,int id)
             return n->data;
         }
     }
+    exit(0);
 }
 void dlist_set(Dlist *list,int id,Singtype num)
 {
@@ -84,15 +85,15 @@ void dlist_set(Dlist *list,int id,Singtype num)
 }
 void dlist_add(Dlist *list,int id,Singtype num)
 {
-    if (list == NULL || id < 0 ||id > list->lenght)
+    if (list == NULL || id < 0 ||id > list->length)
     {
         return;
     }
-    if (list->lenght == 0)
+    if (list->length == 0)
     {
         dlist_push_front(list,num);
     }
-    else if (id == list->lenght)
+    else if (id == list->length)
     {
         dlist_push_back(list,num);
     }
@@ -103,14 +104,14 @@ void dlist_add(Dlist *list,int id,Singtype num)
         new->data = num;
         new->next = temp->next;
         temp->next = new;
-        list->lenght++;
+        list->length++;
     }
 }
 Singtype dlist_remove(Dlist *list,int id)
 {
-    if (list == NULL || id < 0 ||id > list->lenght)
+    if (list == NULL || id < 0 ||id > list->length)
     {
-        return;
+        exit(0);
     }
     Singtype node;
     if (id == 0)
@@ -118,10 +119,10 @@ Singtype dlist_remove(Dlist *list,int id)
         node = list->head->data;
         dlist_pop_front(list);
     }
-    else if (id == (list->lenght)-1)
+    else if (id == (list->length)-1)
     {
         node = list->tail->data;
-        dlist_pop_front(list);
+        dlist_pop_back(list);
     }
     else
     {
@@ -130,7 +131,7 @@ Singtype dlist_remove(Dlist *list,int id)
         struct Node* cur = temp->next;
         temp->next = cur->next;
         free(cur);
-        list->lenght--;
+        list->length--;
     }
     return node;
 }
@@ -139,7 +140,7 @@ int dlist_index(Dlist *list,Singtype num)
     if (list != NULL)
     {
         struct Node* temp = list->head;
-        for (size_t i = 0; i < list->lenght; i++,temp = temp->next)
+        for (size_t i = 0; i < list->length; i++,temp = temp->next)
         {
             if (temp->data == num)
             {
@@ -163,7 +164,11 @@ void dlist_push_front(Dlist *list,Singtype num)
     temp->next = list->head;
     temp->data = num;
     list->head = temp;
-    list->lenght++;
+    if (list->length == 0)
+    {
+        list->tail = temp;
+    }
+    list->length++;
 }
 void dlist_push_back(Dlist *list,Singtype num)
 {
@@ -180,16 +185,16 @@ struct Node*temp = malloc(sizeof(struct Node));
     temp->data = num;
     list->tail->next = temp;
     list->tail = temp;
-    list->lenght++;
+    list->length++;
 }
 void dlist_pop_front(Dlist *list)
 {
-    if (list == NULL || list->lenght == 0)
+    if (list == NULL || list->length == 0)
     {
         return;
     }
     struct Node* temp = list->head;
-    if (list->lenght == 1)
+    if (list->length == 1)
     {
         free(temp);
         list->head = NULL;
@@ -200,16 +205,16 @@ void dlist_pop_front(Dlist *list)
     list->head = temp->next;
     free(temp);
     }
-    list->lenght--;
+    list->length--;
 }
 void dlist_pop_back(Dlist *list)
 {
-    if (list == NULL || list->lenght == 0)
+    if (list == NULL || list->length == 0)
     {
         return;
     }
     struct Node* temp = list->head;
-    if (list->lenght == 1)
+    if (list->length == 1)
     {
         free(temp);
         list->head = NULL;
@@ -217,9 +222,10 @@ void dlist_pop_back(Dlist *list)
     }
     else
     {
-        temp = get_nodes(list,(list->lenght)-2);
+        temp = get_nodes(list,(list->length)-2);
         list->tail = temp;
         free(temp->next);
+        temp->next = NULL;
     }
-    list->lenght--;
+    list->length--;
 }
