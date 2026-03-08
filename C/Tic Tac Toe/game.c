@@ -20,8 +20,10 @@ void quick_clear() {
 int play(int player,char a)
 {
     int n1 = 0,m1 = 0,clear = 0,n2 = 0,m2 = 0;
+    printf(" 1 2 3\n");
     for (n1 = 0;n1< 3;n1++)
     {
+        printf("%d",n1+1);
         for (m1 = 0; m1 < 3;m1++)
         {
             printf("%c ",chess[n1][m1]);
